@@ -6,4 +6,4 @@ ReactJS is a powerful JavaScript library for building dynamic user interfaces. I
 
 Use the package manager [npm](https://www.npmjs.com/) to install the libraries.
 
-    npm i bootstrap netlify-cli react react-bootstrap react-dom react-icons react-router-dom react-scripts swiper web-vitals
+    npm i @testing-library/jest-dom @testing-library/react @testing-library/user-event bootstrap framer-motion react react-bootstrap react-countup react-dom react-google-recaptcha react-icons react-router-dom react-scripts reaptcha swiper web-vitals
