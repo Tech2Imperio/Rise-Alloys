@@ -79,22 +79,25 @@ export const Footer = () => {
           <h5 className="Raleway">Follow Us</h5>
           <div className="footer-icons">
             <div className="ficons">
-              <Link target="_blank" to="www.facebook.com">
+              <Link target="_blank" to="https://www.facebook.com">
                 <Facebook />
               </Link>
             </div>
             <div className="ficons">
-              <Link target="_blank" to="twitter.com">
+              <Link target="_blank" to="https://twitter.com">
                 <Twitter />
               </Link>
             </div>
             <div className="ficons">
-              <Link target="_blank" to="www.instagram.com">
+              <Link target="_blank" to="https://www.instagram.com/rise.alloys">
                 <Instagram />
               </Link>
             </div>
             <div className="ficons">
-              <Link target="_blank" to="www.linkedin.com">
+              <Link
+                target="_blank"
+                to="https://www.linkedin.com/company/rise-alloys"
+              >
                 <Linkedin />
               </Link>
             </div>

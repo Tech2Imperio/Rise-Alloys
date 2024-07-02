@@ -147,17 +147,14 @@ export const NavBar = (props) => {
             <div className="nav-icons">
               <div className="nav-ficons">
                 <div data-bs-dismiss="offcanvas" aria-label="Close">
-                  <Link
-                    target="_blank"
-                    to="https://www.facebook.com/imperiorailingsystem/"
-                  >
+                  <Link target="_blank" to="https://www.facebook.com">
                     <Facebook />
                   </Link>
                 </div>
               </div>
               <div className="nav-ficons">
                 <div data-bs-dismiss="offcanvas" aria-label="Close">
-                  <Link target="_blank" to="https://twitter.com/ImperioRailing">
+                  <Link target="_blank" to="https://twitter.com">
                     <Twitter />
                   </Link>
                 </div>
@@ -166,7 +163,7 @@ export const NavBar = (props) => {
                 <div data-bs-dismiss="offcanvas" aria-label="Close">
                   <Link
                     target="_blank"
-                    to="https://www.instagram.com/imperio.railings/"
+                    to="https://www.instagram.com/rise.alloys"
                     className="icons  "
                   >
                     <Instagram />
@@ -177,7 +174,7 @@ export const NavBar = (props) => {
                 <div data-bs-dismiss="offcanvas" aria-label="Close">
                   <Link
                     target="_blank"
-                    to="https://www.linkedin.com/company/imperiorailingsystems/"
+                    to="https://www.linkedin.com/company/rise-alloys"
                   >
                     <Linkedin />
                   </Link>
