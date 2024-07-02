@@ -1,0 +1,55 @@
+.extras-divs p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+.extras-divs ul {
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+.stainless-Steel-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.stainless-Steel-table th,
+.stainless-Steel-table td {
+  padding: 8px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+.stainless-Steel-table th {
+  font-family: "Raleway";
+  background-color: rgba(167, 169, 172, 0.2);
+  font-weight: bold;
+  text-align: left;
+}
+
+.stainless-Steel-table tr td ul {
+  list-style-type: none;
+}
+
+.stainlessSteel {
+  margin-bottom: 15px;
+}
+
+.stainlessSteel div {
+  line-height: 2;
+}
+
+.stainlessSteel ul {
+  line-height: 1;
+}
+
+.extras-divs div ul {
+  list-style-type: circle;
+}
+
+.extras-divs div ul li {
+  margin-bottom: 8px;
+  position: relative;
+}

@@ -1,0 +1,213 @@
+.contact-left {
+  width: 575px;
+  color: var(--primary);
+  height: 680px;
+}
+
+.contact-left-container {
+  background-color: rgba(0, 74, 173, 1);
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  padding: 50px;
+  padding-top: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.left-header {
+  color: var(--primary);
+  position: relative;
+  width: fit-content;
+}
+
+.left-header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--primary);
+}
+
+.left-header-text {
+  color: var(--secondary);
+  font-size: large;
+}
+
+.left-contact-container,
+.left-contact-footer {
+  position: relative;
+  z-index: 3;
+  /* margin: 30px; */
+}
+
+.left-contact-details:nth-child(1) {
+  line-height: 50px;
+  margin-top: 70px;
+}
+
+.left-contact-detail {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  padding-left: 0px;
+  font-size: larger;
+}
+
+.left-contact-detail div:nth-child(2) {
+  position: relative;
+  text-decoration: none;
+  color: var(--primary);
+  transition: color 0.5s ease-in-out;
+}
+
+.left-contact-detail div:nth-child(2)::before {
+  content: "";
+  position: absolute;
+  bottom: 14px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: var(--primary);
+  transition: width 0.5s ease-in-out;
+}
+
+.left-contact-detail:nth-child(1) div:nth-child(2):hover::before,
+.left-contact-detail:nth-child(2) div:nth-child(2):hover::before {
+  width: 100%;
+}
+
+.left-contact-detail:nth-child(3) {
+  line-height: 30px;
+}
+
+.left-contact-footer {
+  position: absolute;
+  bottom: 30px;
+}
+
+.left-contact-footer-icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  font-size: 23px;
+}
+
+.left-content-icons {
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  border-radius: 50%;
+  /* margin: auto; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--primary);
+  transition: all 0.6s ease;
+}
+
+.left-content-icons:hover {
+  background-color: var(--primary);
+}
+
+.left-content-icons:nth-child(1):hover {
+  color: #007bff;
+}
+
+.left-content-icons:nth-child(2):hover {
+  color: #000000;
+}
+
+.left-content-icons:nth-child(3):hover {
+  color: #c36082;
+}
+
+.left-content-icons:nth-child(4):hover {
+  color: #0a66c2;
+}
+
+.contact-left-design {
+  height: 100%;
+  width: 100%;
+  background: transparent;
+  position: absolute;
+  z-index: 3;
+}
+
+.contact-left-ring:nth-child(1) {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  /* border: solid 2px white; */
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  bottom: -67px;
+  left: 345px;
+}
+
+.contact-left-ring:nth-child(2) {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  bottom: 137px;
+  left: 308px;
+}
+
+@media (max-width: 1200px) {
+  .contact-left-ring:nth-child(1) {
+    left: 52px;
+  }
+
+  .contact-left-ring:nth-child(2) {
+    left: 15px;
+  }
+
+  .left-header {
+    font-size: 28px;
+  }
+
+  .contact-left {
+    margin-bottom: 0px;
+  }
+
+  .left-contact-details:nth-child(1) {
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 800px) {
+  .left-contact-details:nth-child(1) {
+    margin-top: 70px;
+  }
+
+  .contact-left-ring:nth-child(1) {
+    left: 400px;
+  }
+
+  .contact-left-ring:nth-child(2) {
+    left: 363px;
+  }
+
+  .left-header {
+    font-size: 40px;
+  }
+
+  .contact-left {
+    width: 100%;
+    padding: 0% 5% 0% 5%;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-left-ring:nth-child(1) {
+    left: 52px;
+  }
+
+  .contact-left-ring:nth-child(2) {
+    left: 15px;
+  }
+}

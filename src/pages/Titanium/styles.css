@@ -1,0 +1,35 @@
+.extras-divs p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+.extras-divs ul {
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+.titanium-table {
+  width: 100%;
+  overflow-y: scroll;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.titanium-table th,
+.titanium-table td {
+  padding: 8px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+.titanium-table th {
+  font-family: "Raleway";
+  background-color: rgba(167, 169, 172, 0.2);
+  font-weight: bold;
+  text-align: left;
+}
+
+.titanium-table ul {
+  list-style-type: disc;
+}

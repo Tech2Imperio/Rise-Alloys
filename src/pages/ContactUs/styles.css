@@ -1,0 +1,21 @@
+.contact-header {
+  margin-top: 80px;
+  text-align: center;
+}
+
+.contact-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-direction: row;
+  margin-bottom: 25px;
+}
+
+@media (max-width: 800px) {
+  .contact-container {
+    flex-direction: column-reverse;
+  }
+}
+
+@media (max-width: 480px) {
+}

@@ -1,0 +1,40 @@
+.extras-divs p {
+  margin: 30px;
+  margin-top: 5px;
+}
+
+.extras-divs .copper-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 10px;
+}
+
+.copper-table th,
+.copper-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+}
+
+.copper-table th {
+  font-family: "Raleway";
+  background-color: rgba(167, 169, 172, 0.2);
+}
+
+.extras-divs .copper-list {
+  list-style: bold;
+  margin: 20px;
+  margin-top: 5px;
+}
+
+.extras-divs .copper-table th:first-child,
+.extras-divs .copper-table td:first-child {
+  text-align: left;
+}
+
+@media (max-width: 480px) {
+  .extras-divs p {
+    margin: 10px;
+    margin-top: 5px;
+  }
+}

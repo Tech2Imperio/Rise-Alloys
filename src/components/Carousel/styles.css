@@ -1,0 +1,41 @@
+.carousel-indicators [data-bs-target] {
+  display: none;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  display: none;
+}
+.carousal-images {
+  height: 100vh;
+  width: 100%;
+}
+
+.carousal-header {
+  color: var(--primary);
+  text-shadow: 5px 5px rgba(0, 0, 0, 0.24);
+  font-size: 4rem;
+  font-weight: bolder;
+}
+
+.carousal-content {
+  text-shadow: 5px 5px rgba(0, 0, 0, 0.24);
+  font-size: 2rem;
+}
+
+@media (max-width: 480px) {
+  .carousal-header {
+    font-size: 2rem;
+  }
+
+  .carousal-content {
+    font-size: 1rem;
+  }
+  .carousel-item {
+    overflow: hidden;
+  }
+
+  .carousal-images {
+    width: auto;
+  }
+}

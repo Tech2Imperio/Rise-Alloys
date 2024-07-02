@@ -1,0 +1,11 @@
+{
+  "name": "Rice Alloys",
+  "short_name": "Rice Alloys",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "description": "Rice Alloys is a company that supplies various metal alloys and their products for industrial and commercial use. Explore our range of high-quality metal alloys and their versatile applications.",
+  "prefer_related_applications": false,
+  "related_applications": []
+}
