@@ -14,8 +14,7 @@ export const ContactRight = () => {
   });
   const [rows, setRows] = useState(1);
   const formRef = useRef(null);
-  const [human, setHuman] = useState(false);
-  const iframeRef = useRef(null);
+  const [human, setHuman] = useState(true);
   const navigate = useNavigate();
 
   const validateEmail = (email) => {
@@ -67,34 +66,33 @@ export const ContactRight = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const formErrors = validateForm();
-    if (formErrors[0]) {
-      formRef.current.submit();
-      navigate("thanks");
-      iframeRef.current.onload = () => {
-        setFormData({
-          company: "",
-          name: "",
-          email: "",
-          number: "",
-          query: "",
-        });
-        setHuman(false);
-        setRows(1);
-      };
-    } else {
+    if (!formErrors[0]) {
       alert(formErrors[1][Object.keys(formErrors[1])[0]]);
     }
+    fetch(
+      "https://script.google.com/macros/s/AKfycbz4A_wnMBKRu2xkbK16NsIIJDur0eterys6an4bG6mdYafyzKrSINPeZ_Nmp4RH1I3EXg/exec",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          from: "contact",
+          company: formData["company"],
+          name: formData["name"],
+          email: formData["email"],
+          number: formData["number"],
+          query: formData["query"],
+        }),
+      }
+    )
+      .then((response) => response.text())
+      .then((data) => {
+        console.log("Response from server:", data); // Log the response data
+        navigate("thanks"); // Navigate to "thanks" page or perform any other action
+      })
+      .catch((error) => console.error("Error sending data:", error));
   };
 
   return (
-    <form
-      ref={formRef}
-      className="contact-right"
-      action="https://script.google.com/macros/s/AKfycbzx3CYkhS6gVQIBAeVBs00QaZCW8b1gBCky7iRDO9hrUj6r5ppREd3eJofkyfg9CnNdfg/exec"
-      method="post"
-      target="hidden_iframe"
-      onSubmit={handleSubmit}
-    >
+    <form ref={formRef} className="contact-right" onSubmit={handleSubmit}>
       <div className="contact-right-container">
         <div className="contact-right-design">
           <div className="contact-right-ring"></div>
@@ -107,7 +105,6 @@ export const ContactRight = () => {
                 <input
                   type="text"
                   className="forminputs"
-                  id={field}
                   name={field}
                   value={formData[field]}
                   onChange={handleChange}
@@ -125,7 +122,6 @@ export const ContactRight = () => {
               <input
                 type="email"
                 className="forminputs"
-                id="email"
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
@@ -140,7 +136,6 @@ export const ContactRight = () => {
               <input
                 type="tel"
                 className="forminputs"
-                id="number"
                 name="number"
                 value={formData.number}
                 onChange={handleNumberInput}
@@ -157,7 +152,6 @@ export const ContactRight = () => {
             <div className="right-contact-detail">
               <textarea
                 name="query"
-                id="query"
                 className="formTextArea"
                 value={formData.query}
                 onChange={handleChange}
@@ -194,14 +188,6 @@ export const ContactRight = () => {
           </div>
         </div>
       </div>
-      <iframe
-        ref={iframeRef}
-        name="hidden_iframe"
-        style={{ display: "none" }}
-        title="Temp Frame"
-      >
-        {false ? "" : ""}
-      </iframe>
     </form>
   );
 };

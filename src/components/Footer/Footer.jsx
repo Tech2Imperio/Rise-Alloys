@@ -11,38 +11,35 @@ import { logoWhiteW } from "../../assets";
 
 export const Footer = () => {
   const [email, setEmail] = useState("");
+  const [modalMessage, setModalMessage] = useState("");
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const object1 = document.getElementById("submited");
     const object2 = document.getElementById("button");
 
-    try {
-      const response = await fetch(
-        "https://script.google.com/macros/s/AKfycbxdQajQvHcLH4a5s7o3Y9Pia9dpGUqhDFPxcYFgEm1Ih66ZQA0wjGG_qLbSoSH7riUr/exec",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-          body: "email=" + encodeURIComponent(email),
+    fetch(
+      "https://script.google.com/macros/s/AKfycbz4A_wnMBKRu2xkbK16NsIIJDur0eterys6an4bG6mdYafyzKrSINPeZ_Nmp4RH1I3EXg/exec",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          from: "footer",
+          email: email,
+        }),
+      }
+    )
+      .then((res) => res.text())
+      .then((data) => {
+        object1.style.display = "block";
+        object2.style.display = "none";
+        setEmail("");
+        if (data === "Success") {
+          setModalMessage("Thank you, your email has been submitted");
+        } else if (data === "Email in database") {
+          setModalMessage("This email already exists. Please contact us.");
         }
-      );
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      const responseText = await response.text();
-      object1.style.display = "block";
-      object2.style.display = "none";
-
-      setEmail("");
-      if (responseText === "Success") {
-        alert("Thank you, your email has been submitted");
-      } else if (responseText === "Email already exists") {
-        alert("This email already exists. Please contact us.");
-      }
-    } catch (error) {
-      console.error("Fetch error:", error);
-    }
+      })
+      .catch((error) => console.error("Error sending data:", error));
   };
 
   return (
@@ -130,6 +127,16 @@ export const Footer = () => {
           <p>&copy; 2024 Rise Alloys </p>
         </div>
       </div>
+      {modalMessage && (
+        <div className="modal">
+          <div className="modal-content">
+            <span className="close" onClick={() => setModalMessage("")}>
+              &times;
+            </span>
+            <p>{modalMessage}</p>
+          </div>
+        </div>
+      )}
     </footer>
   );
 };
