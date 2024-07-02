@@ -55,30 +55,24 @@ export const ContactLeft = () => {
         <div className="left-contact-footer">
           <div className="left-contact-footer-icons">
             <div className="left-content-icons">
-              <Link
-                target="_blank"
-                to="https://www.facebook.com/imperiorailingsystem/"
-              >
+              <Link target="_blank" to="https://www.facebook.com">
                 <Facebook />
               </Link>
             </div>
             <div className="left-content-icons">
-              <Link target="_blank" to="https://twitter.com/ImperioRailing">
+              <Link target="_blank" to="https://twitter.com">
                 <Twitter />
               </Link>
             </div>
             <div className="left-content-icons">
-              <Link
-                target="_blank"
-                to="https://www.instagram.com/imperio.railings/"
-              >
+              <Link target="_blank" to="https://www.instagram.com/rise.alloys">
                 <Instagram />
               </Link>
             </div>
             <div className="left-content-icons">
               <Link
                 target="_blank"
-                to="https://www.linkedin.com/company/imperiorailingsystems/"
+                to="https://www.linkedin.com/company/rise-alloys"
               >
                 <Linkedin />
               </Link>
