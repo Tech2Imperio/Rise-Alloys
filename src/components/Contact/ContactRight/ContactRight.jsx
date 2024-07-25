@@ -75,11 +75,11 @@ export const ContactRight = () => {
         method: "POST",
         body: JSON.stringify({
           from: "contact",
-          company: formData["company"],
-          name: formData["name"],
-          email: formData["email"],
-          number: formData["number"],
-          query: formData["query"],
+          company: formData.company,
+          name: formData.name,
+          email: formData.email,
+          number: formData.number,
+          query: formData.query,
         }),
       }
     )
