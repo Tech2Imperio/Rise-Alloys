@@ -4,7 +4,7 @@ import Carousel from "react-bootstrap/Carousel";
 
 export const Carousels = (props) => {
   return (
-    <Carousel interval={2000} pause={false}>
+    <Carousel interval={5000} pause={false}>
       {props.data.map((data, index) => (
         <Carousel.Item key={index}>
           <picture>

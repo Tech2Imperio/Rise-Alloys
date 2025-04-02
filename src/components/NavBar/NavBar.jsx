@@ -1,187 +1,142 @@
-import "./styles.css";
-import React from "react";
-import { logoWhiteH } from "../../assets";
-import { Link } from "react-router-dom";
-import {
-  FaFacebook as Facebook,
-  FaXTwitter as Twitter,
-  FaInstagram as Instagram,
-  FaLinkedin as Linkedin,
-} from "react-icons/fa6";
+"use client";
 
-export const NavBar = (props) => {
-  const open = () => {
-    if (window.innerWidth < 1000) {
-      const object = document.getElementById("dropdown");
-      object.style.display =
-        object.style.display === "block" ? "none" : "block";
-    } else if (window.location.pathname === "") {
-      setTimeout(() => {
-        window.scrollTo({ top: 1300, behavior: "smooth" });
-      }, 0.1);
-    }
+import { useState, useEffect, useRef } from "react";
+import { Link, useLocation } from "react-router-dom";
+import "./styles.css";
+import { logoWhiteW, logoBlackW } from "../../assets";
+import { motion } from "framer-motion";
+import { FaChevronDown } from "react-icons/fa6";
+
+export const NavBar = ({ background }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [productsOpen, setProductsOpen] = useState(false);
+  const location = useLocation();
+  const dropdownRef = useRef(null);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
   };
 
-  const logo = (
-    <img id="logoimg" src={logoWhiteH} className="logo" alt="Logo" />
-  );
+  const toggleProducts = () => {
+    setProductsOpen((prev) => !prev);
+    console.log("Products Open:", !productsOpen); // Debugging log
+  };
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setProductsOpen(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  const productLinks = [
+    { name: "Aluminium Alloy", path: "/aluminium-alloy" },
+    { name: "Stainless Steel", path: "/stainless-steel" },
+    { name: "Nickel Alloy", path: "/nickel-alloy" },
+    { name: "Titanium Alloy", path: "/titanium-alloy" },
+    { name: "Copper Alloy", path: "/copper-alloy" },
+  ];
+
+  const navLinks = [
+    { name: "Home", path: "/" },
+    { name: "About Us", path: "/aboutus" },
+    { name: "Contact", path: "/contact" },
+  ];
+
+  const isActive = (path) => {
+    return location.pathname === path;
+  };
+
+  const isProductActive = () => {
+    return productLinks.some((link) => location.pathname === link.path);
+  };
 
   return (
-    <nav
-      className="navbar navbar-expand-lg navbar-dark fixed-top"
-      style={{
-        backgroundColor: props.background ? "var(--teritary)" : "transparent",
-        transition: "background-color 0.6s ease-in-out",
-      }}
-    >
-      <div className="container-fluid">
-        <Link to="" className="navbar-brand">
-          {logo}
+    <nav className={`navbar ${scrolled || background ? "scrolled" : ""}`}>
+      <div className="navbar-container">
+        <Link to="/" className="navbar-logo">
+          <img
+            src={scrolled || background ? logoBlackW : logoBlackW}
+            alt="Rise Alloys"
+            id="logoimg"
+          />
         </Link>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="offcanvas"
-          data-bs-target="#offcanvasDarkNavbar"
-          aria-controls="offcanvasDarkNavbar"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon" />
-        </button>
 
-        <div
-          className="offcanvas offcanvas-end"
-          tabIndex={-1}
-          id="offcanvasDarkNavbar"
-          aria-labelledby="offcanvasDarkNavbarLabel"
-        >
-          <div className="offcanvas-header">
-            <h5 className="offcanvas-title" id="offcanvasDarkNavbarLabel">
-              <div data-bs-dismiss="offcanvas" aria-label="Close">
-                <Link to="">{logo}</Link>
-              </div>
-            </h5>
-            <button
-              type="button"
-              className="btn-close"
-              data-bs-dismiss="offcanvas"
-              aria-label="Close"
-            />
-          </div>
-          <div className="offcanvas-body">
-            <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
-              <li className="nav-item">
-                <div className="nav-link active">
-                  <div data-bs-dismiss="offcanvas" aria-label="Close">
-                    <Link className="Link" to="">
-                      Home
-                    </Link>
-                  </div>
-                </div>
-              </li>
-              <li className="nav-item">
-                <div className="nav-link active">
-                  <div data-bs-dismiss="offcanvas" aria-label="Close">
-                    <Link className="Link" to="aboutus">
-                      About Us
-                    </Link>
-                  </div>
-                </div>
-              </li>
-              <li className="nav-item">
-                <div className="nav-link active">
-                  <div className="nav-dropdown">
-                    <Link className="Link nav-dropdown-text" onClick={open}>
-                      Products
-                    </Link>
+        <div className={`navbar-menu ${isOpen ? "active" : ""}`}>
+          {navLinks.map((link, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 * index }}
+            >
+              <Link
+                to={link.path}
+                className={`navbar-link ${isActive(link.path) ? "active" : ""}`}
+                onClick={() => setIsOpen(false)}
+              >
+                {link.name}
+                {isActive(link.path) && (
+                  <motion.div
+                    className="active-indicator"
+                    layoutId="activeIndicator"
+                  />
+                )}
+              </Link>
+            </motion.div>
+          ))}
 
-                    <div className="nav-dropdown-content" id="dropdown">
-                      <div data-bs-dismiss="offcanvas" aria-label="Close">
-                        <Link className="Link" to="aluminium-alloy">
-                          Aluminium Alloy
-                        </Link>
-                      </div>
-                      <div data-bs-dismiss="offcanvas" aria-label="Close">
-                        <Link className="Link" to="titanium-alloy">
-                          Titanium Alloy
-                        </Link>
-                      </div>
-                      <div data-bs-dismiss="offcanvas" aria-label="Close">
-                        <Link className="Link" to="stainless-steel">
-                          Stainless Steel
-                        </Link>
-                      </div>
-                      <div data-bs-dismiss="offcanvas" aria-label="Close">
-                        <Link className="Link" to="copper-alloy">
-                          Copper & Alloy
-                        </Link>
-                      </div>
-                      <div data-bs-dismiss="offcanvas" aria-label="Close">
-                        <Link className="Link" to="nickel-alloy">
-                          Nickel Alloy
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              {/* <li className="nav-item">
-                <div className="nav-link active">
-                  <div data-bs-dismiss="offcanvas" aria-label="Close">
-                    <Link className="Link" to="blog">
-                    Blog
-                  </Link>
-                  </div>
-                </div>
-              </li> */}
-              <li className="nav-item">
-                <div className="nav-link active">
-                  <div data-bs-dismiss="offcanvas" aria-label="Close">
-                    <Link className="Link" to="contact">
-                      Contact Us
-                    </Link>
-                  </div>
-                </div>
-              </li>
-            </ul>
-            <div className="nav-icons">
-              <div className="nav-ficons">
-                <div data-bs-dismiss="offcanvas" aria-label="Close">
-                  <Link target="_blank" to="https://www.facebook.com">
-                    <Facebook />
-                  </Link>
-                </div>
-              </div>
-              <div className="nav-ficons">
-                <div data-bs-dismiss="offcanvas" aria-label="Close">
-                  <Link target="_blank" to="https://twitter.com">
-                    <Twitter />
-                  </Link>
-                </div>
-              </div>
-              <div className="nav-ficons">
-                <div data-bs-dismiss="offcanvas" aria-label="Close">
-                  <Link
-                    target="_blank"
-                    to="https://www.instagram.com/rise.alloys"
-                    className="icons  "
-                  >
-                    <Instagram />
-                  </Link>
-                </div>
-              </div>
-              <div className="nav-ficons">
-                <div data-bs-dismiss="offcanvas" aria-label="Close">
-                  <Link
-                    target="_blank"
-                    to="https://www.linkedin.com/company/rise-alloys"
-                  >
-                    <Linkedin />
-                  </Link>
-                </div>
-              </div>
+          <div className="dropdown-container" ref={dropdownRef}>
+            <div
+              className="navbar-link dropdown-trigger"
+              onClick={toggleProducts}
+            >
+              Products
+              <FaChevronDown
+                className={`dropdown-icon ${productsOpen ? "open" : ""}`}
+              />
+            </div>
+            <div className={`dropdown-menu ${productsOpen ? "open" : ""}`}>
+              {productLinks.map((link, index) => (
+                <Link
+                  key={index}
+                  to={link.path}
+                  className={`dropdown-item ${
+                    isActive(link.path) ? "active" : ""
+                  }`}
+                  onClick={() => {
+                    setProductsOpen(false);
+                    setIsOpen(false);
+                  }}
+                >
+                  {link.name}
+                </Link>
+              ))}
             </div>
           </div>
+        </div>
+
+        <div className="navbar-toggle" onClick={toggleMenu}>
+          <div className={`toggle-bar ${isOpen ? "open" : ""}`}></div>
+          <div className={`toggle-bar ${isOpen ? "open" : ""}`}></div>
+          <div className={`toggle-bar ${isOpen ? "open" : ""}`}></div>
         </div>
       </div>
     </nav>

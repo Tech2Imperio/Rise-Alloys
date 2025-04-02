@@ -5,3 +5,4 @@ export * from "./DropDown/DropDown";
 export * from "./Footer/Footer";
 export * from "./Home";
 export * from "./NavBar/NavBar";
+export * from "./Hero/Hero";

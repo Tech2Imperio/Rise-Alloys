@@ -1,13 +1,13 @@
 import "./styles.css";
 import React from "react";
-import { Carousels, AboutUs, ProductSlider, Value } from "../../components";
+import { Hero, AboutUs, ProductSlider, Value } from "../../components";
 import { carousals } from "../../data";
 
 export const Home = () => {
   //
   return (
     <div className="home-header">
-      <Carousels data={carousals} />
+      <Hero data={carousals} />
       <ProductSlider />
       <AboutUs />
       <Value />

@@ -11,10 +11,10 @@
 
 .value-image {
   width: 100%;
-  border-radius: 2rem;
+  /* border-radius: 2rem; */
   object-fit: fill;
   overflow: hidden;
-  border: 8px solid rgb(232 232 232 / 93%);
+  /* border: 8px solid rgb(232 232 232 / 93%); */
 }
 
 .value-image img {

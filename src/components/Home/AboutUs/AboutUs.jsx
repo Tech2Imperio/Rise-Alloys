@@ -8,9 +8,6 @@ export const AboutUs = () => {
     <div className="about-section paddings innerWidth">
       <h1 className="about-header PrimaryText">About Us!</h1>
       <div className="about-content">
-        <div className="about-content-image value-image">
-          <img src={homeSliderH1} alt="About Us" />
-        </div>
         <div className="about-content-text">
           <h3 className="about-content-header SecondaryText Raleway">
             Rise Alloys
@@ -29,6 +26,9 @@ export const AboutUs = () => {
           <Link to="aboutus" className="home-about-redirect">
             Learn More
           </Link>
+        </div>
+        <div className="about-content-image value-image">
+          <img src={homeSliderH1} alt="About Us" />
         </div>
       </div>
     </div>

@@ -1,5 +1,8 @@
 .main-container {
-  height: 450px;
+  height: 550px;
+  padding-top: 160px; /* Increased padding to make room for floating images */
+  position: relative;
+  z-index: 1;
 }
 
 .r-container {
@@ -15,6 +18,8 @@
 
 .r-head {
   margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
 }
 
 .r-card {
