@@ -13,10 +13,16 @@ import {
   homeSliderL5,
   homeSliderL6,
   homeSliderL7,
+  metalPro1,
+  metalPro2,
+  metalPro3,
 } from "../assets";
 
 const imageSlider = [
   [
+    metalPro1,
+    metalPro2,
+    metalPro3,
     homeSliderH1,
     homeSliderH2,
     homeSliderH3,

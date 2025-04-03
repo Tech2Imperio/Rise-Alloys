@@ -1,5 +1,4 @@
 import "./styles.css";
-import React from "react";
 import { Link } from "react-router-dom";
 import { FaRegEnvelope } from "react-icons/fa";
 import { HiOutlineBadgeCheck } from "react-icons/hi";
@@ -8,65 +7,61 @@ import { LuShoppingCart } from "react-icons/lu";
 import { value } from "../../../assets";
 
 export const Value = () => {
-  var valueDatas = [
+  const valueData = [
     {
       icons: <LuShoppingCart />,
       header: "Product Showcase",
       content:
-        "Explore our premium aluminum, steel, and copper products in our interactive gallery. Discover exceptional quality and expert craftsmanship at Rise Alloys, setting us apart in the industry. Contact us today for high-quality solutions tailored to your needs",
+        "Explore our premium aluminum, steel, and copper products in our interactive gallery. Discover exceptional quality and expert craftsmanship at Rise Alloys.",
     },
     {
       icons: <FaRegEnvelope />,
       header: "Get in Touch",
       content:
-        "Ready for top-tier alloys? Contact us to explore stainless steel, copper, and nickel alloy products. Let's exceed your expectations with our unmatched quality and tailored solutions.",
+        "Ready for top-tier alloys? Contact us to explore stainless steel, copper, and nickel alloy products with unmatched quality and tailored solutions.",
     },
     {
       icons: <HiOutlineBadgeCheck />,
       header: "Quality Assurance",
       content:
-        "Rise Alloys: Superior quality, premium materials, stringent standards. Trusted choice with certifications and warranties for reliability. Experience excellence today!",
+        "Rise Alloys: Superior quality, premium materials, stringent standards. Trusted choice with certifications and warranties for reliability.",
     },
     {
       icons: <MdOutlineFactory />,
       header: "Manufacturing Excellence",
       content:
-        "Our state-of-the-art manufacturing facilities ensure precision and excellence in every product. Explore our cutting-edge production processes that make Rise Alloys a leader in the industry.",
+        "Our state-of-the-art manufacturing facilities ensure precision and excellence in every product. Explore our cutting-edge production processes.",
     },
   ];
 
   return (
-    <section className="v-wrapper">
+    <section className="value-wrapper">
       <div className="value-section innerWidth paddings">
-        <div className="v-right">
-          <div className="PrimaryText value-main-header">
+        <div className="value-content-container">
+          <h2 className="PrimaryText value-main-header">
             Discover the Superiority of Rise Alloys
+          </h2>
+
+          <div className="value-grid">
+            {valueData.map((item, index) => (
+              <div key={index} className="value-card">
+                <div className="value-icon">{item.icons}</div>
+                <div className="value-text">
+                  <h3 className="PrimaryText value-header">{item.header}</h3>
+                  <p className="SecondaryText value-content">{item.content}</p>
+                </div>
+              </div>
+            ))}
           </div>
 
-          <div className="value-container">
-            {valueDatas.map((item, index) => {
-              return (
-                <div key={index} className="value-provider">
-                  <div className="value-icon">{item.icons}</div>
-                  <div className="value-right">
-                    <span className="PrimaryText value-header">
-                      {item.header}
-                    </span>
-                    <span className="SecondaryText value-content">
-                      {item.content}
-                    </span>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-          <Link className="value-button button val-btn" to="contact">
+          <Link className="value-button" to="contact">
             Get a Quote
           </Link>
         </div>
-        <div className="v-left">
+
+        <div className="value-image-container">
           <div className="value-image">
-            <img src={value} alt="value" />
+            <img src={value || "/placeholder.svg"} alt="value" />
           </div>
         </div>
       </div>
