@@ -150,7 +150,7 @@
 .toggle-bar {
   width: 30px;
   height: 3px;
-  background-color: white;
+  background-color: #5280cf;
   transition: all 0.3s ease;
 }
 
