@@ -1,6 +1,7 @@
 import "./styles.css";
 import { Link } from "react-router-dom";
-import { homeSliderH1 } from "../../../assets";
+// import { homeSliderH1 } from "../../../assets";
+import { about1 } from "../../../assets";
 
 export const AboutUs = () => {
   return (
@@ -29,7 +30,7 @@ export const AboutUs = () => {
             </Link>
           </div>
           <div className="about-content-image">
-            <img src={homeSliderH1 || "/placeholder.svg"} alt="About Us" />
+            <img src={about1 || "/placeholder.svg"} alt="About Us" />
           </div>
         </div>
       </div>

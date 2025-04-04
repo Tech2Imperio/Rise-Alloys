@@ -8,6 +8,9 @@ import homeSliderH7 from "./slider7.webp";
 import metalPro1 from "./metalPro1.jpg";
 import metalPro2 from "./metalPro2.jpg";
 import metalPro3 from "./metalPro3.jpg";
+import about1 from "./about1.jpeg";
+import about2 from "./about2.webp";
+import aboutt2 from "./about2.jpg";
 
 export {
   homeSliderH1,
@@ -20,4 +23,7 @@ export {
   metalPro1,
   metalPro2,
   metalPro3,
+  about1,
+  about2,
+  aboutt2,
 };

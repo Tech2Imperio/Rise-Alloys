@@ -4,7 +4,8 @@ import { FaRegEnvelope } from "react-icons/fa";
 import { HiOutlineBadgeCheck } from "react-icons/hi";
 import { MdOutlineFactory } from "react-icons/md";
 import { LuShoppingCart } from "react-icons/lu";
-import { value } from "../../../assets";
+// import { value } from "../../../assets";
+import { aboutt2 } from "../../../assets";
 
 export const Value = () => {
   const valueData = [
@@ -61,7 +62,7 @@ export const Value = () => {
 
         <div className="value-image-container">
           <div className="value-image">
-            <img src={value || "/placeholder.svg"} alt="value" />
+            <img src={aboutt2 || "/placeholder.svg"} alt="value" />
           </div>
         </div>
       </div>

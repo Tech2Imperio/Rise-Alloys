@@ -73,7 +73,7 @@ export const NavBar = ({ background }) => {
       <div className="navbar-container">
         <Link to="/" className="navbar-logo">
           <img
-            src={scrolled || background ? logoBlackW : logoBlackW}
+            src={scrolled ? logoBlackW : logoBlackW}
             alt="Rise Alloys"
             id="logoimg"
           />
