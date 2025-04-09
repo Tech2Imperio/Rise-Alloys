@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./styles.css";
-import { logoWhiteW, logoBlackW } from "../../assets";
+import { logoBlackW } from "../../assets";
 import { motion } from "framer-motion";
 import { FaChevronDown } from "react-icons/fa6";
 
@@ -64,9 +64,9 @@ export const NavBar = ({ background }) => {
     return location.pathname === path;
   };
 
-  const isProductActive = () => {
-    return productLinks.some((link) => location.pathname === link.path);
-  };
+  // const isProductActive = () => {
+  //   return productLinks.some((link) => location.pathname === link.path);
+  // };
 
   return (
     <nav className={`navbar ${scrolled || background ? "scrolled" : ""}`}>

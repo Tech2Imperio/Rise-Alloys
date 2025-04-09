@@ -1,21 +1,22 @@
 .hero-section {
   width: 100%;
-  padding: 6rem 2rem 10rem;
+  padding: 6rem 2rem;
   background-color: #f8f9fa;
   position: relative;
   overflow: visible;
-  /* margin-top: 50px; Add margin to account for fixed navbar */
+  margin-top: 70px; /* Add margin to account for fixed navbar */
 }
 
 .hero-container {
-  max-width: 1400px;
-  margin: 0 auto;
+  width: 100%;
+  margin: 0;
   display: flex;
   justify-content: center;
+  height: 50vh;
 }
 
 .hero-text {
-  max-width: 800px;
+  max-width: 600px;
   text-align: center;
 }
 
@@ -53,7 +54,7 @@
   justify-content: center;
   gap: 2rem;
   position: absolute;
-  bottom: -120px; /* Increased to make images float more into the products section */
+  bottom: -100px; /* Increased to make images float more into the products section */
   left: 0;
   right: 0;
   z-index: 10;
@@ -67,7 +68,6 @@
 .floating-image-container {
   position: relative;
   overflow: hidden;
-  border-radius: 8px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease;
   height: 220px; /* Increased height for better visibility */
@@ -100,11 +100,39 @@
 
 /* Responsive styles */
 @media (max-width: 992px) {
+  .hero-section {
+    padding-bottom: 8rem; /* Reduced padding to prevent excessive space */
+    margin-top: 60px; /* Adjusted for mobile */
+  }
+
+  .hero-title {
+    font-size: 2.8rem;
+  }
+
+  .floating-images-container {
+    position: relative;
+    bottom: -30px; /* Adjusted for mobile to reduce overlap */
+    flex-wrap: wrap;
+    padding: 0 1rem;
+  }
+
+  .floating-image-wrapper {
+    max-width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .floating-image-container {
+    height: 180px; /* Reduced height for mobile */
+  }
+}
+
+@media (max-width: 768px) {
   .floating-images-container {
     flex-direction: column;
     align-items: center;
     position: relative;
-    bottom: -50px;
+    bottom: 0; /* Reset position for mobile */
+    margin-top: 2rem; /* Add margin instead of negative positioning */
     gap: 1rem;
   }
 
@@ -114,21 +142,24 @@
   }
 
   .hero-section {
-    padding-bottom: 6rem;
-    margin-top: 60px; /* Adjusted for mobile */
+    padding-bottom: 2rem; /* Reduced padding since we're not using negative positioning */
   }
 
-  .hero-title {
-    font-size: 2.8rem;
-  }
-}
-
-@media (max-width: 576px) {
   .hero-title {
     font-size: 2.2rem;
   }
 
   .hero-description {
     font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-section {
+    padding: 4rem 1rem 2rem;
+  }
+
+  .floating-image-container {
+    height: 160px; /* Further reduced height for small mobile */
   }
 }

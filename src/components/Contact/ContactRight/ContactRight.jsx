@@ -1,8 +1,8 @@
+"use client";
 import { useNavigate } from "react-router-dom";
-import { contact } from "../../../assets";
-import "./styles.css";
-import React, { useState, useRef } from "react";
+import { useState, useRef } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
+import "./styles.css";
 
 export const ContactRight = () => {
   const [formData, setFormData] = useState({
@@ -12,9 +12,9 @@ export const ContactRight = () => {
     number: "",
     query: "",
   });
-  const [rows, setRows] = useState(1);
+  const [rows, setRows] = useState(4);
   const formRef = useRef(null);
-  const [human, setHuman] = useState(true);
+  const [human, setHuman] = useState(false);
   const navigate = useNavigate();
 
   const validateEmail = (email) => {
@@ -33,8 +33,8 @@ export const ContactRight = () => {
 
     if (name === "query") {
       const match = "\n";
-      let matches = value.match(new RegExp(match, "gi"));
-      setRows(matches ? matches.length + 1 : 1);
+      const matches = value.match(new RegExp(match, "gi"));
+      setRows(matches ? matches.length + 4 : 4);
     }
   };
 
@@ -44,7 +44,7 @@ export const ContactRight = () => {
   };
 
   const validateForm = () => {
-    let formErrors = {};
+    const formErrors = {};
     if (!formData.company) formErrors.company = "Company is required.";
     if (!formData.name) formErrors.name = "Name is required.";
     if (!formData.email) {
@@ -65,10 +65,13 @@ export const ContactRight = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const formErrors = validateForm();
-    if (!formErrors[0]) {
-      alert(formErrors[1][Object.keys(formErrors[1])[0]]);
+    const [isValid, formErrors] = validateForm();
+
+    if (!isValid) {
+      alert(formErrors[Object.keys(formErrors)[0]]);
+      return;
     }
+
     fetch(
       "https://script.google.com/macros/s/AKfycbz4A_wnMBKRu2xkbK16NsIIJDur0eterys6an4bG6mdYafyzKrSINPeZ_Nmp4RH1I3EXg/exec",
       {
@@ -85,107 +88,111 @@ export const ContactRight = () => {
     )
       .then((response) => response.text())
       .then((data) => {
-        console.log("Response from server:", data); // Log the response data
-        navigate("thanks"); // Navigate to "thanks" page or perform any other action
+        console.log("Response from server:", data);
+        navigate("thanks");
       })
       .catch((error) => console.error("Error sending data:", error));
   };
 
   return (
-    <form ref={formRef} className="contact-right" onSubmit={handleSubmit}>
-      <div className="contact-right-container">
-        <div className="contact-right-design">
-          <div className="contact-right-ring"></div>
-          <div className="contact-right-ring"></div>
+    <form ref={formRef} className="contact-form" onSubmit={handleSubmit}>
+      <div className="form-container">
+        <div className="form-header">
+          <h2>Send Us a Message</h2>
+          <div className="separator-small"></div>
         </div>
-        <div className="right-contact-container">
-          <div className="right-contact-details">
-            {["company", "name"].map((field) => (
-              <div key={field} className="right-contact-detail">
-                <input
-                  type="text"
-                  className="forminputs"
-                  name={field}
-                  value={formData[field]}
-                  onChange={handleChange}
-                  aria-label={field}
-                  required
-                />
-                <label className="input-label" htmlFor={field}>
-                  {field.charAt(0).toUpperCase() + field.slice(1)}
-                </label>
-              </div>
-            ))}
+
+        <div className="form-row">
+          <div className="form-group">
+            <input
+              type="text"
+              id="company"
+              name="company"
+              className="form-input"
+              value={formData.company}
+              onChange={handleChange}
+              required
+            />
+            <label htmlFor="company" className="form-label">
+              Company
+            </label>
           </div>
-          <div className="right-contact-details">
-            <div className="right-contact-detail">
-              <input
-                type="email"
-                className="forminputs"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                aria-label="email"
-                required
-              />
-              <label className="input-label" htmlFor="email">
-                Email
-              </label>
-            </div>
-            <div className="right-contact-detail">
-              <input
-                type="tel"
-                className="forminputs"
-                name="number"
-                value={formData.number}
-                onChange={handleNumberInput}
-                aria-label="number"
-                pattern="\d*"
-                required
-              />
-              <label className="input-label" htmlFor="number">
-                Number
-              </label>
-            </div>
-          </div>
-          <div className="right-contact-details">
-            <div className="right-contact-detail">
-              <textarea
-                name="query"
-                className="formTextArea"
-                value={formData.query}
-                onChange={handleChange}
-                placeholder="Write your inquiry..."
-                rows={rows}
-                aria-label="query"
-                required
-              />
-            </div>
+
+          <div className="form-group">
+            <input
+              type="text"
+              id="name"
+              name="name"
+              className="form-input"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
+            <label htmlFor="name" className="form-label">
+              Name
+            </label>
           </div>
         </div>
-        <div className="right-footer">
-          <div className="right-captcha-details">
-            <div className="right-captcha-detail">
-              <ReCAPTCHA
-                sitekey="6LelCAAqAAAAAGUF65rE9pM45OBRdFJPHSotZxEz"
-                onChange={() => setHuman(true)}
-              />
-            </div>
+
+        <div className="form-row">
+          <div className="form-group">
+            <input
+              type="email"
+              id="email"
+              name="email"
+              className="form-input"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+            <label htmlFor="email" className="form-label">
+              Email
+            </label>
           </div>
-          <div className="right-contact-footer">
-            <div className="right-contact">
-              <button
-                type="submit"
-                className="button footerbutton"
-                disabled={!human}
-              >
-                Submit Query
-              </button>
-            </div>
-            <div className="right-image">
-              <img src={contact} alt="Contact illustration" loading="lazy" />
-            </div>
+
+          <div className="form-group">
+            <input
+              type="tel"
+              id="number"
+              name="number"
+              className="form-input"
+              value={formData.number}
+              onChange={handleNumberInput}
+              pattern="\d*"
+              required
+            />
+            <label htmlFor="number" className="form-label">
+              Phone Number
+            </label>
           </div>
+        </div>
+
+        <div className="form-group">
+          <textarea
+            id="query"
+            name="query"
+            className="form-textarea"
+            value={formData.query}
+            onChange={handleChange}
+            rows={rows}
+            required
+          ></textarea>
+          <label htmlFor="query" className="form-label">
+            Your Message
+          </label>
+        </div>
+
+        <div className="form-footer">
+          <div className="recaptcha-container">
+            <ReCAPTCHA
+              sitekey="6LelCAAqAAAAAGUF65rE9pM45OBRdFJPHSotZxEz"
+              onChange={() => setHuman(true)}
+            />
+          </div>
+
+          <button type="submit" className="submit-button" disabled={!human}>
+            Send Message
+          </button>
         </div>
       </div>
     </form>

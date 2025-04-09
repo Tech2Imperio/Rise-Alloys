@@ -1,7 +1,7 @@
-import "./styles.css";
-import React from "react";
+"use client";
 import { motion } from "framer-motion";
-import { aboutUs1, aboutUs2, aboutUsLand, aboutUsPort } from "../../assets";
+import "./styles.css";
+import { metalpro, metalPro1, metalPro3 } from "../../assets";
 import {
   FaUserCog,
   FaBalanceScale,
@@ -12,145 +12,195 @@ import {
 } from "react-icons/fa";
 
 export const AboutUs = () => {
+  const fadeIn = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6 },
+    },
+  };
+
+  const staggerChildren = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
   return (
-    <section className="aboutus-section">
-      <div className="image-design">
-        <picture>
-          <source media="(min-width: 800px)" srcSet={aboutUsLand} />
+    <section className="about-section">
+      <div className="hero-container">
+        <div className="hero-image">
           <img
-            src={aboutUsPort}
+            src={metalpro || "/placeholder.svg"}
             alt="About Us"
             loading="lazy"
-            style={{ height: "80vh", width: "100%", position: "relative" }}
           />
-        </picture>
-        <div className="aboutus-image-header">
-          <motion.h1
-            initial={{ y: 0, opacity: 0 }}
-            animate={{ y: 300, opacity: 1 }}
-            transition={{ duration: 5, type: "spring" }}
-            className="aboutus-header-text Title"
+          <div className="overlay"></div>
+          <motion.div
+            className="hero-content"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.5 }}
           >
-            About Us
-          </motion.h1>
+            <h1 className="hero-title" style={{ color: "white" }}>
+              About Us
+            </h1>
+            <div className="separator"></div>
+            <p className="hero-quote">
+              Crafting Excellence with Precision Metal Alloys
+            </p>
+          </motion.div>
         </div>
       </div>
-      <div className="aboutus-container">
-        <div className="aboutus-header Raleway">
-          "Bringing quality alloy steel and aluminum to dealers nationwide.
-          <br />
-          We specialize in providing top-notch materials for your business
-          needs.
-          <br />
-          Discover excellence with us."
-        </div>
-        <div className="aboutus-content innerWidth paddings">
-          <div className="about-left">
-            <div className="about-image">
+
+      <div className="about-container">
+        <motion.div
+          className="mission-statement"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeIn}
+        >
+          <p>
+            "Bringing quality alloy steel and aluminum to dealers nationwide. We
+            specialize in providing top-notch materials for your business needs.
+            Discover excellence with us."
+          </p>
+        </motion.div>
+
+        <motion.div
+          className="content-section"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={staggerChildren}
+        >
+          <div className="image-column">
+            <motion.div variants={fadeIn} className="image-wrapper">
               <img
-                className="img-cont1"
-                src={aboutUs1}
+                src={metalPro1 || "/placeholder.svg"}
                 alt="Our Expertise"
                 loading="lazy"
               />
-            </div>
+            </motion.div>
           </div>
-          <div className="about-right">
-            <div className="about-right-content">
-              <div className="about-icons">
+
+          <div className="text-column">
+            <motion.div variants={fadeIn} className="feature-item">
+              <div className="icon-wrapper">
                 <FaUserCog />
               </div>
-              <div className="about-right-content-text">
-                <strong className="Raleway">Expertise: </strong> Our team
-                comprises seasoned metallurgists and engineers with a wealth of
-                knowledge in stainless steel, aluminum, and nickel alloys. Their
-                expertise enables us to create alloys that offer exceptional
-                performance and durability.
+              <div className="feature-content">
+                <h3>Expertise</h3>
+                <p>
+                  Our team comprises seasoned metallurgists and engineers with a
+                  wealth of knowledge in stainless steel, aluminum, and nickel
+                  alloys. Their expertise enables us to create alloys that offer
+                  exceptional performance and durability.
+                </p>
               </div>
-            </div>
-            <div className="about-right-content">
-              <div className="about-icons">
+            </motion.div>
+
+            <motion.div variants={fadeIn} className="feature-item">
+              <div className="icon-wrapper">
                 <FaBalanceScale />
               </div>
-              <div className="about-right-content-text">
-                <strong className="Raleway">Quality: </strong> Quality is our
-                top priority. We adhere to strict quality control measures
-                throughout the manufacturing process to ensure that every alloy
-                meets the highest standards of excellence.
+              <div className="feature-content">
+                <h3>Quality</h3>
+                <p>
+                  Quality is our top priority. We adhere to strict quality
+                  control measures throughout the manufacturing process to
+                  ensure that every alloy meets the highest standards of
+                  excellence.
+                </p>
               </div>
-            </div>
-            <div className="about-right-content">
-              <div className="about-icons">
+            </motion.div>
+
+            <motion.div variants={fadeIn} className="feature-item">
+              <div className="icon-wrapper">
                 <FaLightbulb />
               </div>
-              <div className="about-right-content-text">
-                <strong className="Raleway">Innovation: </strong> Innovation is
-                at the heart of our operations. We invest in research and
-                development to stay at the forefront of alloy technology,
-                constantly improving our products to meet evolving industry
-                demands.
+              <div className="feature-content">
+                <h3>Innovation</h3>
+                <p>
+                  Innovation is at the heart of our operations. We invest in
+                  research and development to stay at the forefront of alloy
+                  technology, constantly improving our products to meet evolving
+                  industry demands.
+                </p>
               </div>
-            </div>
+            </motion.div>
           </div>
-        </div>
-        <div className="aboutus-content innerWidth paddings">
-          <div className="about-left">
-            <div className="about-left-content">
-              <div className="about-icons">
+        </motion.div>
+
+        <motion.div
+          className="content-section"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={staggerChildren}
+        >
+          <div className="text-column">
+            <motion.div variants={fadeIn} className="feature-item">
+              <div className="icon-wrapper">
                 <FaWrench />
               </div>
-              <div className="about-left-content-text">
-                <strong className="Raleway">Stainless Steel Alloys: </strong> We
-                offer a wide range of stainless steel alloys suitable for
-                various applications, including corrosion-resistant grades for
-                harsh environments and high-strength alloys for structural
-                purposes.
+              <div className="feature-content">
+                <h3>Stainless Steel Alloys</h3>
+                <p>
+                  We offer a wide range of stainless steel alloys suitable for
+                  various applications, including corrosion-resistant grades for
+                  harsh environments and high-strength alloys for structural
+                  purposes.
+                </p>
               </div>
-            </div>
-            <div className="about-left-content">
-              <div className="about-icons">
+            </motion.div>
+
+            <motion.div variants={fadeIn} className="feature-item">
+              <div className="icon-wrapper">
                 <FaBolt />
               </div>
-              <div className="about-left-content-text">
-                <strong className="Raleway">Nickel Alloys: </strong> Our nickel
-                alloys excel in extreme environments, providing exceptional
-                resistance to heat, corrosion, and wear. They are used in
-                aerospace, chemical processing, and other demanding industries.
+              <div className="feature-content">
+                <h3>Nickel Alloys</h3>
+                <p>
+                  Our nickel alloys excel in extreme environments, providing
+                  exceptional resistance to heat, corrosion, and wear. They are
+                  used in aerospace, chemical processing, and other demanding
+                  industries.
+                </p>
               </div>
-            </div>
-            <div className="about-left-content">
-              <div className="about-icons">
+            </motion.div>
+
+            <motion.div variants={fadeIn} className="feature-item">
+              <div className="icon-wrapper">
                 <FaIndustry />
               </div>
-              <div className="about-left-content-text">
-                <strong className="Raleway">Aluminum Alloys: </strong> Our
-                aluminum alloys are known for their lightweight, corrosion
-                resistance, and versatility, making them ideal for automotive,
-                aerospace, and industrial applications.
+              <div className="feature-content">
+                <h3>Aluminum Alloys</h3>
+                <p>
+                  Our aluminum alloys are known for their lightweight, corrosion
+                  resistance, and versatility, making them ideal for automotive,
+                  aerospace, and industrial applications.
+                </p>
               </div>
-            </div>
+            </motion.div>
           </div>
-          <div className="about-right">
-            <div className="about-image">
+
+          <div className="image-column">
+            <motion.div variants={fadeIn} className="image-wrapper">
               <img
-                className="img-cont1"
-                src={aboutUs2}
+                src={metalPro3 || "/placeholder.svg"}
                 alt="Aluminum Alloys"
                 loading="lazy"
               />
-            </div>
+            </motion.div>
           </div>
-        </div>
-        {/* Uncomment the below section if you want to include the carousel */}
-        {/* <div className="aboutus-content padding">
-            <Carousel interval={4000} pause={false}>
-              {imageAboutslider.map((data, index) => (
-                <Carousel.Item key={index}>
-                  <img className="about-carousal-images" src={data} alt="" />
-                </Carousel.Item>
-              ))}
-            </Carousel>
-          </div> */}
+        </motion.div>
       </div>
     </section>
   );

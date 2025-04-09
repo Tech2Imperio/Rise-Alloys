@@ -1,6 +1,6 @@
-import "./styles.css";
-import React from "react";
+"use client";
 import { Link } from "react-router-dom";
+import "./styles.css";
 import {
   FaPhone,
   FaEnvelope,
@@ -13,70 +13,78 @@ import {
 
 export const ContactLeft = () => {
   return (
-    <aside className="contact-left">
-      <div className="contact-left-container">
-        <div className="contact-left-design">
-          <div className="contact-left-ring"></div>
-          <div className="contact-left-ring"></div>
+    <aside className="contact-info-card">
+      <div className="contact-info-container">
+        <div className="contact-info-header">
+          <h2>Contact Information</h2>
+          <div className="separator-small"></div>
         </div>
-        <div className="left-header-container">
-          <h1 className="left-header PrimaryText">Contact Information</h1>
-        </div>
-        <div className="left-contact-container">
-          <div className="left-contact-details">
-            <div className="left-contact-detail">
-              <div>
-                <FaPhone />
-              </div>
-              <div>
-                <Link to={`tel:+910000000000`} target="_blank">
-                  +91 93725 93981
-                </Link>
-              </div>
+
+        <div className="contact-details">
+          <div className="contact-item">
+            <div className="contact-icon">
+              <FaPhone />
             </div>
-            <div className="left-contact-detail">
-              <div>
-                <FaEnvelope />
-              </div>
-              <div>
-                <Link to={`mailto:tech@risealloys.com`} target="_blank">
-                  info@risealloys.com
-                </Link>
-              </div>
-            </div>
-            <div className="left-contact-detail">
-              <div>
-                <FaLocationDot />
-              </div>
-              <div>New Queens Road, Mumbai - 400004</div>
+            <div className="contact-text">
+              <Link to={`tel:+919372593981`} className="contact-link">
+                +91 93725 93981
+              </Link>
             </div>
           </div>
+
+          <div className="contact-item">
+            <div className="contact-icon">
+              <FaEnvelope />
+            </div>
+            <div className="contact-text">
+              <Link to={`mailto:info@risealloys.com`} className="contact-link">
+                info@risealloys.com
+              </Link>
+            </div>
+          </div>
+
+          <div className="contact-item">
+            <div className="contact-icon">
+              <FaLocationDot />
+            </div>
+            <div className="contact-text">New Queens Road, Mumbai - 400004</div>
+          </div>
         </div>
-        <div className="left-contact-footer">
-          <div className="left-contact-footer-icons">
-            <div className="left-content-icons">
-              <Link target="_blank" to="https://www.facebook.com">
-                <Facebook />
-              </Link>
-            </div>
-            <div className="left-content-icons">
-              <Link target="_blank" to="https://twitter.com">
-                <Twitter />
-              </Link>
-            </div>
-            <div className="left-content-icons">
-              <Link target="_blank" to="https://www.instagram.com/rise.alloys">
-                <Instagram />
-              </Link>
-            </div>
-            <div className="left-content-icons">
-              <Link
-                target="_blank"
-                to="https://www.linkedin.com/company/rise-alloys"
-              >
-                <Linkedin />
-              </Link>
-            </div>
+
+        <div className="decorative-shape"></div>
+        <div className="decorative-shape small"></div>
+
+        <div className="social-links">
+          <h3>Connect With Us</h3>
+          <div className="social-icons">
+            <Link
+              to="https://www.facebook.com"
+              target="_blank"
+              className="social-icon"
+            >
+              <Facebook />
+            </Link>
+            <Link
+              to="https://twitter.com"
+              target="_blank"
+              className="social-icon"
+            >
+              <Twitter />
+            </Link>
+            <Link
+              to="https://www.instagram.com/rise.alloys"
+              target="_blank"
+              className="social-icon"
+            >
+              <Instagram />
+            </Link>
+            <Link
+              to="https://www.linkedin.com/company/rise-alloys"
+              target="_blank"
+              className="social-icon"
+            >
+              <Linkedin />
+            </Link>
           </div>
         </div>
       </div>
