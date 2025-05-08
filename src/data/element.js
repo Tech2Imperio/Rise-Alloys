@@ -1,4 +1,11 @@
-import { aluminum, copper, nickel, stainLessSteel, titanium } from "../assets";
+import {
+  aluminum,
+  copper,
+  nickel,
+  stainLessSteel,
+  titanium,
+  electroTube,
+} from "../assets";
 
 export const elementsData = {
   aluminum: [
@@ -127,6 +134,31 @@ export const elementsData = {
         high-temperature strength, and ability to withstand extreme
         environments. Nickel alloys find applications in various industries,
         including aerospace, marine, chemical processing, and electronics.
+      </p>
+    </>,
+  ],
+  electroTube: [
+    {
+      src: electroTube,
+      altText: "Electro polished tube",
+    },
+    <>
+      <p>
+        Tubes play a vital role in various industries, and electropolishing is a
+        popular process used to enhance their properties.{" "}
+        <strong>Electropolishing</strong> is an electrochemical treatment that
+        improves the surface finish of metals, especially stainless steel, by
+        removing a thin layer of material, resulting in a smooth, shiny, and
+        corrosion-resistant surface.
+      </p>
+      <p>
+        The electropolishing process significantly enhances the{" "}
+        <strong>corrosion resistance</strong> and <strong>cleanliness</strong>{" "}
+        of the tube, making it ideal for industries such as pharmaceuticals,
+        food processing, and healthcare. Electropolished tubes are highly valued
+        for their ability to resist rust and maintain their appearance over
+        time. Additionally, this process reduces surface imperfections, which
+        helps to improve the overall strength and durability of the material.
       </p>
     </>,
   ],

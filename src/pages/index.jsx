@@ -7,3 +7,5 @@ export * from "./Nickel";
 export * from "./NotFound";
 export * from "./StainLessSteel";
 export * from "./Titanium";
+export * from "./ElectroTube";
+export * from "./ExclusiveElectroTube";

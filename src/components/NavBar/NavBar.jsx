@@ -52,6 +52,7 @@ export const NavBar = ({ background }) => {
     { name: "Nickel Alloy", path: "/nickel-alloy" },
     { name: "Titanium Alloy", path: "/titanium-alloy" },
     { name: "Copper Alloy", path: "/copper-alloy" },
+    { name: "Electro Polished Tube", path: "/exclusive-electro" },
   ];
 
   const navLinks = [

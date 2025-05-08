@@ -17,8 +17,10 @@ import {
   StainLessSteel,
   ThankYou,
   Titanium,
+  ElectroTube,
 } from "./pages";
-
+import ProductPage from "./pages/ProductPage/product-page";
+import { ExclusiveElectroTube } from "./pages/ExclusiveElectroTube";
 export const Routes = () => {
   const [navBackground, setNavBackground] = useState(
     window.location.pathname === "/" || window.location.pathname === "/aboutus"
@@ -100,10 +102,28 @@ export const Routes = () => {
           <Route path="nickel-alloy" element={<Nickel />} />
           <Route path="stainless-steel" element={<StainLessSteel />} />
           <Route path="copper-alloy" element={<Copper />} />
+          <Route path="electro-polished-tube" element={<ElectroTube />} />
           <Route path="contact" element={<ContactUs />} />
+          <Route path="exclusive-electro" element={<ExclusiveElectroTube />} />
           <Route path="contact/thanks" element={<ThankYou />} />
           <Route path="aboutus" element={<AboutUs />} />
           <Route path="*" element={<NotFound />} />
+          {/* Product category routes */}
+
+          <Route path="/stainless-steel/:productId" element={<ProductPage />} />
+
+          <Route path="/aluminium-alloy/:productId" element={<ProductPage />} />
+
+          <Route path="/titanium-alloy/:productId" element={<ProductPage />} />
+
+          <Route path="/copper-alloy/:productId" element={<ProductPage />} />
+
+          <Route path="/nickel-alloy/:productId" element={<ProductPage />} />
+
+          <Route
+            path="/electro-polished-tube/:productId"
+            element={<ProductPage />}
+          />
         </Route>
       </RouteLines>
     </Router>

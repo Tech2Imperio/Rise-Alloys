@@ -1,15 +1,15 @@
-.about-section {
+.home-about-section {
   background-color: var(--primary);
   padding: 80px 0px;
   transition: all ease 0.5s;
 }
 
-.about-container {
+.home-about-container {
   max-width: 1200px;
   margin: 0 auto;
 }
 
-.about-header {
+.home-about-header {
   margin-bottom: 3rem;
   font-size: 3rem;
   font-weight: 600;
@@ -17,7 +17,7 @@
   position: relative;
 }
 
-.about-header:after {
+.home-about-header:after {
   content: "";
   position: absolute;
   bottom: -15px;
@@ -28,39 +28,39 @@
   background-color: var(--teritary);
 }
 
-.about-content {
+.home-about-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 60px;
 }
 
-.about-content-header {
+.home-about-content-header {
   font-size: 1.8rem;
   font-weight: bold;
   color: var(--teritary);
   margin-bottom: 1.5rem;
 }
 
-.about-content-text {
+.home-about-content-text {
   flex: 1;
 }
 
-.about-paragraph {
+.home-about-paragraph {
   margin-bottom: 1.5rem;
   line-height: 1.8;
   font-size: 1.05rem;
   color: #333;
 }
 
-.about-content-image {
+.home-about-content-image {
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.about-content-image img {
+.home-about-content-image img {
   max-width: 100%;
   height: auto;
   border-radius: 8px;

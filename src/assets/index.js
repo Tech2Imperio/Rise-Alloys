@@ -5,3 +5,4 @@ export * from "./logo";
 export * from "./nickel";
 export * from "./products";
 export * from "./stainlesssteel";
+export * from "./electroTube";

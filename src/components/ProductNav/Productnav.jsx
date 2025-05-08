@@ -99,6 +99,29 @@ export const ProductNav = ({ activeCategory }) => {
         { name: "Alloy 82", path: "/nickel-alloy/alloy-82" },
       ],
     },
+    {
+      id: "electro-polished-tube",
+      name: "Electro Polished Tube",
+      subparts: [
+        { name: 'Size 1/2" (OD 12.7 mm)', path: "/electro-polished-tube/12-7" },
+        {
+          name: 'Size 3/4" (OD 19.05 mm)',
+          path: "/electro-polished-tube/19-05",
+        },
+        { name: 'Size 1" (OD 25.4 mm)', path: "/electro-polished-tube/25-4" },
+        {
+          name: 'Size 1 1/2" (OD 38.1 mm)',
+          path: "/electro-polished-tube/38-1",
+        },
+        { name: 'Size 2" (OD 50.8 mm)', path: "/electro-polished-tube/50-8" },
+        {
+          name: 'Size 2 1/2" (OD 63.5 mm)',
+          path: "/electro-polished-tube/63-5",
+        },
+        { name: 'Size 3" (OD 76.2 mm)', path: "/electro-polished-tube/76-2" },
+        { name: 'Size 4" (OD 101.6 mm)', path: "/electro-polished-tube/101-6" },
+      ],
+    },
   ];
 
   // Close dropdown when clicking outside
