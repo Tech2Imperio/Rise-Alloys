@@ -127,7 +127,7 @@ export const Footer = () => {
           </div>
         </form>
         <div className="copyright Raleway ">
-          <p>&copy; 2024 Rise Alloys </p>
+          <p>&copy; 2025 Rise Alloys </p>
         </div>
       </div>
       {modalMessage && (
