@@ -55,11 +55,11 @@ export const NavBar = ({ background }) => {
     { name: "Electro Polished Tube", path: "/exclusive-electro" },
   ];
 
-  const navLinks = [
-    { name: "Home", path: "/" },
-    { name: "About Us", path: "/aboutus" },
-    { name: "Contact", path: "/contact" },
-  ];
+  // const navLinks = [
+  //   { name: "Home", path: "/" },
+  //   { name: "About Us", path: "/aboutus" },
+  //   { name: "Contact", path: "/contact" },
+  // ];
 
   const isActive = (path) => {
     return location.pathname === path;
@@ -81,7 +81,7 @@ export const NavBar = ({ background }) => {
         </Link>
 
         <div className={`navbar-menu ${isOpen ? "active" : ""}`}>
-          {navLinks.map((link, index) => (
+          {/* {navLinks.map((link, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: -10 }}
@@ -102,7 +102,45 @@ export const NavBar = ({ background }) => {
                 )}
               </Link>
             </motion.div>
-          ))}
+          ))} */}
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 * 1 }}
+          >
+            <Link
+              to={"/"}
+              className={`navbar-link ${isActive("/") ? "active" : ""}`}
+              onClick={() => setIsOpen(false)}
+            >
+              {"Home"}
+              {isActive("/") && (
+                <motion.div
+                  className="active-indicator"
+                  layoutId="activeIndicator"
+                />
+              )}
+            </Link>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 * 1 }}
+          >
+            <Link
+              to={"/aboutus"}
+              className={`navbar-link ${isActive("/aboutus") ? "active" : ""}`}
+              onClick={() => setIsOpen(false)}
+            >
+              {"About Us"}
+              {isActive("/aboutus") && (
+                <motion.div
+                  className="active-indicator"
+                  layoutId="activeIndicator"
+                />
+              )}
+            </Link>
+          </motion.div>
 
           <div className="dropdown-container" ref={dropdownRef}>
             <div
@@ -132,6 +170,25 @@ export const NavBar = ({ background }) => {
               ))}
             </div>
           </div>
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 * 1 }}
+          >
+            <Link
+              to={"/contact"}
+              className={`navbar-link ${isActive("/contact") ? "active" : ""}`}
+              onClick={() => setIsOpen(false)}
+            >
+              {"Contact"}
+              {isActive("/contact") && (
+                <motion.div
+                  className="active-indicator"
+                  layoutId="activeIndicator"
+                />
+              )}
+            </Link>
+          </motion.div>
         </div>
 
         <div className="navbar-toggle" onClick={toggleMenu}>
